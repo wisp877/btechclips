@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#06110c">
+  <title>BTECH CLIPS | Movies & Trailers</title>
+  <style>
+    :root{--green:#00ff78;--bg:#030906;--panel:#09150f;--muted:#a5b5aa;--line:rgba(0,255,120,.2)}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:#f5fff8;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(circle at 15% 15%,rgba(0,255,120,.13),transparent 28%),radial-gradient(circle at 85% 75%,rgba(0,180,100,.12),transparent 30%),linear-gradient(135deg,#020604,#06170e 55%,#020604)}
+    body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.12;background-image:linear-gradient(rgba(0,255,120,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,120,.14) 1px,transparent 1px);background-size:48px 48px}
+    a{color:inherit}
+    header{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px 5%;background:rgba(2,10,6,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+    .logo{font-weight:900;font-size:25px;letter-spacing:1px;color:var(--green);text-decoration:none;text-shadow:0 0 15px rgba(0,255,120,.65);white-space:nowrap}.logo span{color:white}
+    nav{display:flex;gap:20px;flex-wrap:wrap}nav a{text-decoration:none;color:#d5e2d9;font-weight:700;font-size:14px}nav a:hover{color:var(--green)}
+    .search{display:flex;gap:7px;min-width:220px}.search input{width:100%;min-width:0;padding:11px 14px;border-radius:22px;border:1px solid var(--line);background:#07140d;color:white;outline:none}.search input:focus{border-color:var(--green);box-shadow:0 0 14px rgba(0,255,120,.18)}
+    button,.btn{font:inherit;cursor:pointer}.search button,.primary{border:0;border-radius:22px;padding:11px 16px;background:var(--green);color:#001b0b;font-weight:800}
+    .hero{min-height:440px;padding:90px 7%;display:flex;align-items:center}.hero-content{max-width:760px}.eyebrow{display:inline-block;color:var(--green);border:1px solid var(--green);border-radius:30px;padding:8px 14px;font-size:12px;letter-spacing:2px;margin-bottom:20px}
+    h1{font-size:clamp(42px,8vw,82px);line-height:.98;margin-bottom:22px}h1 span,.accent{color:var(--green);text-shadow:0 0 20px rgba(0,255,120,.3)}
+    .hero p{max-width:650px;color:#c0cec5;line-height:1.7;font-size:17px;margin-bottom:25px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap}.btn{display:inline-block;text-decoration:none;padding:13px 20px;border-radius:8px;font-weight:800}.btn-outline{border:1px solid var(--green);color:var(--green);background:rgba(0,0,0,.2)}
+    section{padding:48px 5%}.section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:22px}.section-head h2{font-size:clamp(24px,4vw,32px)}.section-head p{color:var(--muted);font-size:13px;margin-top:7px}
+    .filters{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 24px}.filter{border:1px solid #205337;background:#07140d;color:#cfe0d4;border-radius:20px;padding:8px 14px}.filter.active,.filter:hover{background:var(--green);color:#001b0b;border-color:var(--green)}
+    .poster-tools{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:-6px 0 22px}.poster-tools span{font-size:12px;color:var(--muted)}.poster-tools .small-btn{padding:9px 13px;cursor:pointer;background:#07140d}\n    .movie-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:19px}
+    .movie-card{overflow:hidden;border:1px solid var(--line);border-radius:13px;background:linear-gradient(180deg,#0c1b12,#06100a);transition:transform .25s,border-color .25s,box-shadow .25s;min-width:0}
+    .movie-card:hover{transform:translateY(-6px);border-color:var(--green);box-shadow:0 12px 30px rgba(0,0,0,.35),0 0 18px rgba(0,255,120,.1)}
+    .poster{height:270px;display:flex;align-items:center;justify-content:center;text-align:center;padding:18px;position:relative;overflow:hidden;background:radial-gradient(circle at 50% 25%,rgba(0,255,120,.28),transparent 38%),linear-gradient(145deg,#14291b,#07100a 65%,#102619)}
+    .poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:1}.poster.has-image{padding:0}.poster.has-image:before{z-index:2;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.55))}.poster-title{z-index:3}.poster-year{z-index:4}.poster:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,transparent 30%,rgba(0,255,120,.08),transparent 70%);transform:skewY(-18deg)}
+    .poster-title{position:relative;font-weight:900;font-size:21px;line-height:1.15;text-shadow:0 3px 12px #000}.poster-year{position:absolute;left:12px;top:12px;background:rgba(0,0,0,.65);border:1px solid var(--line);padding:5px 8px;border-radius:20px;font-size:11px;color:var(--green)}
+    .movie-info{padding:13px}.movie-info h3{font-size:15px;line-height:1.35;margin-bottom:8px}.meta{color:#9caf9f;font-size:12px;line-height:1.5;min-height:36px}.movie-actions{display:grid;gap:7px;margin-top:12px}.small-btn{display:block;text-align:center;text-decoration:none;border:1px solid var(--green);color:var(--green);background:transparent;border-radius:7px;padding:8px 6px;font-size:12px;font-weight:800}.small-btn:hover{background:var(--green);color:#001b0b}
+    .empty{display:none;text-align:center;color:var(--muted);padding:35px 10px;grid-column:1/-1}
+    .feature{margin:10px 5% 30px;padding:35px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(110deg,rgba(0,30,15,.95),rgba(5,18,10,.78)),radial-gradient(circle at 90% 20%,rgba(0,255,120,.2),transparent 40%)}
+    .feature h2{font-size:30px;margin-bottom:10px}.feature p{color:#bdcfc2;line-height:1.6;max-width:700px;margin-bottom:18px}
+    .info-panel{border:1px solid var(--line);border-radius:12px;background:rgba(7,20,13,.8);padding:20px;color:#c0cec5;line-height:1.7}.info-panel strong{color:var(--green)}
+    .tmdb-credit{color:#809487;font-size:11px;margin-top:12px;text-align:center}\n    footer{padding:35px 5%;text-align:center;border-top:1px solid var(--line);background:#020704;color:#8fa195}footer strong{display:block;color:var(--green);font-size:23px;margin-bottom:8px}
+    #topBtn{position:fixed;right:18px;bottom:18px;width:43px;height:43px;border-radius:50%;border:1px solid var(--green);background:#07140d;color:var(--green);display:none;z-index:15}
+    @media(max-width:850px){header{flex-wrap:wrap}nav{order:3;width:100%;justify-content:center}.search{margin-left:auto;flex:1;max-width:360px}}
+    @media(max-width:520px){header{padding:13px 4%}.logo{font-size:21px}nav{gap:13px}nav a{font-size:12px}.search{order:4;max-width:none;flex-basis:100%}.hero{padding:65px 6%;min-height:390px}.hero p{font-size:15px}section{padding:38px 4%}.movie-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.poster{height:205px;padding:10px}.poster-title{font-size:17px}.movie-info{padding:10px}.movie-info h3{font-size:13px}.feature{margin:8px 4% 20px;padding:23px}.section-head{align-items:start;flex-direction:column}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+  </style>
+</head>
+<body>
+<header>
+  <a class="logo" href="#home">BTECH <span>CLIPS</span> ⚡</a>
+  <nav aria-label="Main navigation">
+    <a href="#home">Home</a><a href="#movies">Movies</a><a href="#trailers">Trailers</a><a href="#official">Official Movies</a><a href="#about">About</a>
+  </nav>
+  <form class="search" id="searchForm" role="search">
+    <input id="searchInput" type="search" placeholder="Search movies..." aria-label="Search movies">
+    <button type="submit" aria-label="Search">⌕</button>
+  </form>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="eyebrow">🎬 YOUR MOVIE DISCOVERY HUB</div>
+      <h1>WATCH.<br><span>DISCOVER.</span><br>ENJOY.</h1>
+      <p>Explore movies, find official trailers and discover where to watch films through legitimate streaming and rental services.</p>
+      <div class="hero-actions"><a class="btn primary" href="#movies">🎬 Explore Movies</a><a class="btn btn-outline" href="#trailers">▶ Explore Trailers</a></div>
+    </div>
+  </section>
+
+  <section id="movies">
+    <div class="section-head"><div><h2>🔥 Featured <span class="accent">Movies</span></h2><p id="movieCount">27 titles in the collection</p></div></div>
+    <div class="filters" id="filters" aria-label="Filter movies">
+      <button class="filter active" data-filter="all">All</button>
+      <button class="filter" data-filter="action">Action</button>
+      <button class="filter" data-filter="adventure">Adventure</button>
+      <button class="filter" data-filter="animation">Animation</button>
+      <button class="filter" data-filter="comedy">Comedy</button>
+      <button class="filter" data-filter="drama">Drama</button>
+      <button class="filter" data-filter="fantasy">Fantasy</button>
+      <button class="filter" data-filter="horror">Horror</button>
+      <button class="filter" data-filter="sci-fi">Sci-Fi</button>
+      <button class="filter" data-filter="thriller">Thriller</button>
+    </div>
+    <div class="movie-grid" id="movieGrid" aria-live="polite"></div>
+    <p class="empty" id="emptyState">No movies match your search. Try another title or category.</p>
+  </section>
+
+  <div class="feature" id="trailers">
+    <h2>🎞️ Official <span class="accent">Trailers</span></h2>
+    <p>Find trailer videos from official studios and verified movie channels. Each link opens a YouTube search for the film's official trailer; check the channel before watching.</p>
+    <a class="btn primary" href="https://www.youtube.com/results?search_query=official+movie+trailers" target="_blank" rel="noopener noreferrer">▶ Browse Official Trailers</a>
+  </div>
+
+  <section id="official">
+    <div class="section-head"><div><h2>🍿 Official <span class="accent">Full Movies</span></h2><p>Find legal streaming, rental or purchase options.</p></div></div>
+    <div class="info-panel">
+      <strong>Watch legally:</strong> This section does not host or provide unauthorized copies of copyrighted films. Choose a movie card's “Legal watch options” link to check licensed services in your region, or use the official YouTube Movies catalogue where available. Availability and prices vary by country.
+      <p style="margin-top:12px"><a class="btn btn-outline" href="https://www.justwatch.com/" target="_blank" rel="noopener noreferrer">Find services on JustWatch</a></p>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-head"><div><h2>💚 About <span class="accent">BTECH CLIPS</span></h2></div></div>
+    <p style="max-width:760px;color:#b7c7bc;line-height:1.8">BTECH CLIPS is a movie discovery website created by Cassey Migoya Davidson. Browse a curated collection, filter by genre, search titles, explore official trailers and find legitimate ways to watch.</p>
+  </section>
+</main>
+
+<footer><strong>⚡ BTECH CLIPS</strong><p>Movies • Trailers • Entertainment</p><p style="margin-top:12px">© <span id="year"></span> BTECH CLIPS · Programmed by Cassey Migoya Davidson</p><p class="tmdb-credit">Movie poster images provided by The Movie Database (TMDB). This site is not endorsed or certified by TMDB.</p></footer>
+<button id="topBtn" aria-label="Back to top">↑</button>
+
+<script>
+"use strict";
+
+const movies = [
+  {title:"Forgotten Island",year:2026,genres:["Animation","Adventure"]},
+  {title:"The Dog Stars",year:2026,genres:["Sci-Fi","Thriller"]},
+  {title:"Apocalypse Z: New World",year:2026,genres:["Sci-Fi","Drama"]},
+  {title:"Hope",year:2026,genres:["Sci-Fi","Adventure"]},
+  {title:"Tenzing",year:2026,genres:["Adventure","Biography"]},
+  {title:"Masterplan",year:2026,genres:["Comedy","Crime"]},
+  {title:"The Uprising",year:2026,genres:["History","Drama"]},
+  {title:"Matchbox: The Movie",year:2026,genres:["Adventure","Comedy"]},
+  {title:"Practical Magic",year:1998,genres:["Fantasy","Comedy"]},
+  {title:"Resident Evil",year:2026,genres:["Horror","Sci-Fi"]},
+  {title:"Wildwood",year:2026,genres:["Animation","Adventure"]},
+  {title:"Spider-Man: Brand New Day",year:2026,genres:["Action","Adventure"]},
+  {title:"The Odyssey",year:2026,genres:["Adventure","Fantasy"]},
+  {title:"Toy Story 5",year:2026,genres:["Animation","Comedy"]},
+  {title:"Michael",year:2026,genres:["Biography","Drama"]},
+  {title:"The Super Mario Galaxy Movie",year:2026,genres:["Animation","Adventure"]},
+  {title:"The Devil Wears Prada 2",year:2026,genres:["Comedy","Drama"]},
+  {title:"Project Hail Mary",year:2026,genres:["Sci-Fi"]},
+  {title:"Minions & Monsters",year:2026,genres:["Animation","Comedy"]},
+  {title:"The Hunger Games: Sunrise on the Reaping",year:2026,genres:["Adventure","Sci-Fi"]},
+  {title:"Clayface",year:2026,genres:["Superhero","Horror"]},
+  {title:"Godzilla Minus Zero",year:2026,genres:["Sci-Fi"]},
+  {title:"The Cat in the Hat",year:2026,genres:["Animation","Comedy"]},
+  {title:"The Mongoose",year:2026,genres:["Thriller"]},
+  {title:"The Awakening",year:2026,genres:["Drama"]},
+  {title:"Collision Course",year:2026,genres:["Action","Thriller"]},
+  {title:"Pinocchio: Unstrung",year:2026,genres:["Fantasy","Horror"]}
+];
+
+const grid = document.getElementById("movieGrid");
+const searchInput = document.getElementById("searchInput");
+const emptyState = document.getElementById("emptyState");
+let activeFilter = "all";
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  })[char]);
+}
+
+function makeSearchUrl(title, suffix) {
+  return "https://www.youtube.com/results?search_query=" +
+    encodeURIComponent(title + " " + suffix);
+}
+function makeJustWatchUrl(title) {
+  return "https://www.justwatch.com/us/search?q=" + encodeURIComponent(title);
+}
+
+function renderMovies() {
+  const query = searchInput.value.trim().toLowerCase();
+  const visible = movies.filter(movie => {
+    const matchesText = (movie.title + " " + movie.genres.join(" ")).toLowerCase().includes(query);
+    const matchesGenre = activeFilter === "all" ||
+      movie.genres.some(genre => genre.toLowerCase() === activeFilter);
+    return matchesText && matchesGenre;
+  });
+
+  grid.innerHTML = visible.map(movie => {
+    const title = escapeHTML(movie.title);
+    const genres = escapeHTML(movie.genres.join(" • "));
+    const trailerUrl = makeSearchUrl(movie.title, "official trailer");
+    const watchUrl = makeJustWatchUrl(movie.title);
+    return `
+      <article class="movie-card">
+        <div class="poster" aria-label="Movie poster for ${title}">
+          <span class="poster-year">${movie.year}</span>
+          <span class="poster-title">${title}</span>
+        </div>
+        <div class="movie-info">
+          <h3>${title}</h3>
+          <div class="meta">${movie.year} · ${genres}</div>
+          <div class="movie-actions">
+            <a class="small-btn" href="${trailerUrl}" target="_blank" rel="noopener noreferrer">▶ Find Official Trailer</a>
+            <a class="small-btn" href="${watchUrl}" target="_blank" rel="noopener noreferrer">🍿 Legal Watch Options</a>
+          </div>
+        </div>
+      </article>`;
+  }).join("");
+
+  emptyState.style.display = visible.length ? "none" : "block";
+  document.getElementById("movieCount").textContent =
+    `${visible.length} of ${movies.length} titles shown`;
+}
+
+document.getElementById("filters").addEventListener("click", event => {
+  const button = event.target.closest("button[data-filter]");
+  if (!button) return;
+  activeFilter = button.dataset.filter;
+  document.querySelectorAll(".filter").forEach(item =>
+    item.classList.toggle("active", item === button)
+  );
+  renderMovies();
+});
+
+searchInput.addEventListener("input", renderMovies);
+document.getElementById("searchForm").addEventListener("submit", event => {
+  event.preventDefault();
+  renderMovies();
+  document.getElementById("movies").scrollIntoView({behavior:"smooth"});
+});
+
+
+// Load real poster thumbnails from TMDB.
+// Create a free TMDB account and copy your API Read Access Token (Bearer token).
+// The token is stored only in this browser's localStorage.
+const TMDB_TOKEN_KEY = "btechclips_tmdb_read_token";
+const posterStatus = document.getElementById("posterStatus");
+
+async function loadMoviePosters() {
+  let token = localStorage.getItem(TMDB_TOKEN_KEY);
+  if (!token) {
+    token = prompt("Paste your TMDB API Read Access Token (Bearer token):");
+    if (!token || !token.trim()) {
+      posterStatus.textContent = "No token entered. The title-art placeholders are still available.";
+      return;
+    }
+    token = token.trim();
+    localStorage.setItem(TMDB_TOKEN_KEY, token);
+  }
+
+  const button = document.getElementById("loadPostersBtn");
+  button.disabled = true;
+  button.textContent = "Loading thumbnails…";
+  posterStatus.textContent = "Searching TMDB for movie poster artwork…";
+
+  let loaded = 0;
+  let finished = 0;
+  const cards = [...document.querySelectorAll(".movie-card")];
+
+  async function fetchPoster(card, movie) {
+    try {
+      const params = new URLSearchParams({
+        query: movie.title,
+        include_adult: "false",
+        language: "en-US",
+        page: "1"
+      });
+      const response = await fetch(
+        "https://api.themoviedb.org/3/search/movie?" + params.toString(),
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+            Accept: "application/json"
+          }
+        }
+      );
+      if (response.status === 401 || response.status === 403) {
+        throw new Error("TMDB token was not accepted. Check the API Read Access Token.");
+      }
+      if (!response.ok) throw new Error("TMDB request failed (" + response.status + ").");
+
+      const data = await response.json();
+      const results = Array.isArray(data.results) ? data.results : [];
+      const best = results.find(item => item.poster_path) || null;
+      if (best && best.poster_path) {
+        const poster = card.querySelector(".poster");
+        const image = document.createElement("img");
+        image.src = "https://image.tmdb.org/t/p/w500" + best.poster_path;
+        image.alt = movie.title + " movie poster";
+        image.loading = "lazy";
+        image.decoding = "async";
+        image.onerror = () => {
+          image.remove();
+          poster.classList.remove("has-image");
+        };
+        poster.prepend(image);
+        poster.classList.add("has-image");
+        loaded++;
+      }
+    } catch (error) {
+      if (error.message.includes("token was not accepted")) throw error;
+      console.warn("Poster lookup failed for " + movie.title, error);
+    } finally {
+      finished++;
+      posterStatus.textContent = "Loaded " + loaded + " of " + finished +
+        " checked thumbnails (" + cards.length + " movies total)…";
+    }
+  }
+
+  try {
+    // Keep the number of simultaneous requests modest.
+    for (let i = 0; i < cards.length; i += 4) {
+      await Promise.all(cards.slice(i, i + 4).map((card, offset) =>
+        fetchPoster(card, movies[i + offset])
+      ));
+    }
+    posterStatus.textContent = "Finished: " + loaded + " movie thumbnails loaded. Titles without artwork keep the neon fallback.";
+    button.textContent = "↻ Refresh movie thumbnails";
+  } catch (error) {
+    localStorage.removeItem(TMDB_TOKEN_KEY);
+    posterStatus.textContent = error.message + " Click the button and enter a valid token.";
+    button.textContent = "🖼️ Load real movie thumbnails";
+  } finally {
+    button.disabled = false;
+  }
+}
+
+document.getElementById("loadPostersBtn").addEventListener("click", loadMoviePosters);
+
+
+document.getElementById("year").textContent = new Date().getFullYear();
+const topButton = document.getElementById("topBtn");
+window.addEventListener("scroll", () => {
+  topButton.style.display = window.scrollY > 450 ? "block" : "none";
+}, {passive:true});
+topButton.addEventListener("click", () => window.scrollTo({top:0,behavior:"smooth"}));
+
+renderMovies();
+</script>
+</body>
+</html>
