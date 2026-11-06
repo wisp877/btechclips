@@ -40,6 +40,37 @@
     @media(max-width:520px){header{padding:13px 4%}.logo{font-size:21px}nav{gap:13px}nav a{font-size:12px}.search{order:4;max-width:none;flex-basis:100%}.hero{padding:65px 6%;min-height:390px}.hero p{font-size:15px}section{padding:38px 4%}.movie-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.poster{height:205px;padding:10px}.poster-title{font-size:17px}.movie-info{padding:10px}.movie-info h3{font-size:13px}.feature{margin:8px 4% 20px;padding:23px}.section-head{align-items:start;flex-direction:column}}
     @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
   </style>
+  <style>
+    .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 2px;
+}
+    @media (max-width: 600px) {
+    .logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .logo-text {
+        font-size: 18px;
+    }
+}
+  </style>
 </head>
 <body>
 <header>
