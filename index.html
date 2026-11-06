@@ -1,0 +1,1769 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏠%3C/text%3E%3C/svg%3E">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>⚡🔥Btech Clips 🎬🔥🌟 | Movies & Trailers</title>
+
+<style>
+/* =========================================================
+    — MOVIE WEBSITE
+   EVERYTHING IS INSIDE THIS ONE HTML FILE
+   ========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#020605;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+/* =========================
+   ANIMATED BACKGROUND
+   ========================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-3;
+    background:
+        radial-gradient(circle at 15% 20%,rgba(0,255,100,.18),transparent 25%),
+        radial-gradient(circle at 85% 75%,rgba(0,255,150,.12),transparent 30%),
+        linear-gradient(135deg,#010403,#03150d,#010403);
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    opacity:.15;
+    background-image:
+        linear-gradient(rgba(0,255,100,.18) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(0,255,100,.18) 1px,transparent 1px);
+    background-size:50px 50px;
+    animation:gridMove 12s linear infinite;
+}
+
+@keyframes gridMove{
+    from{
+        transform:translateY(0);
+    }
+    to{
+        transform:translateY(50px);
+    }
+}
+
+/* =========================
+   FLOATING PARTICLES
+   ========================= */
+
+#particles{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-1;
+    overflow:hidden;
+}
+
+.particle{
+    position:absolute;
+    width:4px;
+    height:4px;
+    background:#00ff66;
+    border-radius:50%;
+    box-shadow:0 0 12px #00ff66;
+    animation:floatParticle linear infinite;
+}
+
+@keyframes floatParticle{
+    0%{
+        transform:translateY(110vh) translateX(0);
+        opacity:0;
+    }
+    15%{
+        opacity:1;
+    }
+    85%{
+        opacity:1;
+    }
+    100%{
+        transform:translateY(-10vh) translateX(100px);
+        opacity:0;
+    }
+}
+
+/* =========================
+   HEADER
+   ========================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 6%;
+    background:rgba(0,8,5,.88);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(0,255,100,.2);
+}
+
+.logo{
+    color:#00ff66;
+    font-size:27px;
+    font-weight:900;
+    letter-spacing:1px;
+    text-decoration:none;
+    text-shadow:
+        0 0 5px #00ff66,
+        0 0 15px #00ff66,
+        0 0 30px #00ff66;
+    animation:logoBlink 1.3s infinite;
+}
+
+.logo span{
+    color:white;
+}
+
+@keyframes logoBlink{
+    0%,18%,22%,62%,100%{
+        opacity:1;
+    }
+    20%,21%,60%{
+        opacity:.45;
+    }
+}
+
+nav{
+    display:flex;
+    gap:25px;
+}
+
+nav a{
+    color:#ddd;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#00ff66;
+    text-shadow:0 0 10px #00ff66;
+}
+
+/* =========================
+   SEARCH
+   ========================= */
+
+.search-box{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.search-box input{
+    width:190px;
+    padding:10px 14px;
+    border-radius:25px;
+    border:1px solid rgba(0,255,100,.4);
+    outline:none;
+    background:#06120d;
+    color:white;
+}
+
+.search-box input:focus{
+    box-shadow:0 0 15px rgba(0,255,100,.35);
+}
+
+.search-box button{
+    border:none;
+    background:#00ff66;
+    color:#001b0a;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:17px;
+    font-weight:bold;
+}
+
+/* =========================
+   HERO
+   ========================= */
+
+.hero{
+    min-height:650px;
+    display:flex;
+    align-items:center;
+    padding:70px 7%;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    right:-150px;
+    top:50px;
+    border-radius:50%;
+    background:rgba(0,255,100,.13);
+    filter:blur(90px);
+}
+
+.hero-content{
+    max-width:720px;
+    position:relative;
+    z-index:2;
+}
+
+.badge{
+    display:inline-block;
+    color:#00ff66;
+    border:1px solid #00ff66;
+    padding:8px 15px;
+    border-radius:30px;
+    margin-bottom:20px;
+    font-size:13px;
+    letter-spacing:2px;
+    box-shadow:0 0 15px rgba(0,255,100,.25);
+}
+
+.hero h1{
+    font-size:clamp(45px,8vw,88px);
+    line-height:.95;
+    margin-bottom:25px;
+}
+
+.hero h1 span{
+    color:#00ff66;
+    text-shadow:
+        0 0 10px #00ff66,
+        0 0 30px rgba(0,255,100,.6);
+}
+
+.hero p{
+    color:#b7c5be;
+    line-height:1.7;
+    max-width:650px;
+    font-size:18px;
+    margin-bottom:30px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:14px 24px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+    cursor:pointer;
+    border:none;
+    transition:.3s;
+}
+
+.btn-green{
+    background:#00ff66;
+    color:#001b09;
+    box-shadow:0 0 20px rgba(0,255,100,.35);
+}
+
+.btn-green:hover{
+    transform:translateY(-3px) scale(1.03);
+    box-shadow:0 0 35px rgba(0,255,100,.65);
+}
+
+.btn-dark{
+    background:#07120d;
+    border:1px solid #00ff66;
+    color:#00ff66;
+}
+
+.btn-dark:hover{
+    background:#00ff66;
+    color:#001b09;
+}
+
+/* =========================
+   SECTIONS
+   ========================= */
+
+section{
+    padding:55px 6%;
+}
+
+.section-title{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:25px;
+}
+
+.section-title h2{
+    font-size:30px;
+}
+
+.section-title h2 span{
+    color:#00ff66;
+}
+
+.view-all{
+    color:#00ff66;
+    cursor:pointer;
+    font-size:14px;
+}
+
+/* =========================
+   CATEGORY BUTTONS
+   ========================= */
+
+.categories{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:30px;
+}
+
+.category{
+    padding:9px 17px;
+    border-radius:20px;
+    border:1px solid #174d30;
+    background:#06110c;
+    color:#c8d5ce;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.category:hover,
+.category.active{
+    background:#00ff66;
+    color:#001b09;
+    border-color:#00ff66;
+    box-shadow:0 0 15px rgba(0,255,100,.3);
+}
+
+/* =========================
+   MOVIE GRID
+   ========================= */
+
+.movie-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+    gap:22px;
+}
+
+.movie-card{
+    position:relative;
+    background:#07100c;
+    border:1px solid rgba(0,255,100,.12);
+    border-radius:14px;
+    overflow:hidden;
+    transition:.35s;
+    box-shadow:0 8px 30px rgba(0,0,0,.3);
+}
+
+.movie-card:hover{
+    transform:translateY(-8px);
+    border-color:#00ff66;
+    box-shadow:
+        0 10px 35px rgba(0,0,0,.5),
+        0 0 20px rgba(0,255,100,.16);
+}
+
+.poster{
+    height:280px;
+    position:relative;
+    overflow:hidden;
+    background:#101713;
+}
+
+.poster img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:.5s;
+}
+
+.movie-card:hover .poster img{
+    transform:scale(1.08);
+}
+
+.poster::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        transparent 45%,
+        rgba(0,0,0,.85)
+    );
+}
+
+.movie-info{
+    padding:15px;
+}
+
+.movie-info h3{
+    font-size:17px;
+    margin-bottom:8px;
+}
+
+.meta{
+    display:flex;
+    justify-content:space-between;
+    color:#91a099;
+    font-size:12px;
+    margin-bottom:12px;
+}
+
+.rating{
+    color:#00ff66;
+}
+
+.trailer-btn{
+    width:100%;
+    border:1px solid #00ff66;
+    background:transparent;
+    color:#00ff66;
+    padding:9px;
+    border-radius:7px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.trailer-btn:hover{
+    background:#00ff66;
+    color:#001b09;
+}
+
+/* =========================
+   TRAILER BANNER
+   ========================= */
+
+.trailer-banner{
+    margin:30px 6%;
+    padding:45px;
+    border-radius:20px;
+    position:relative;
+    overflow:hidden;
+    background:
+        linear-gradient(90deg,rgba(0,20,10,.95),rgba(0,30,17,.65)),
+        url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1600&q=80")
+        center/cover;
+    border:1px solid rgba(0,255,100,.35);
+}
+
+.trailer-banner h2{
+    font-size:38px;
+    margin-bottom:12px;
+}
+
+.trailer-banner p{
+    color:#b8c9bf;
+    margin-bottom:20px;
+    max-width:600px;
+}
+
+/* =========================
+   NO RESULTS
+   ========================= */
+
+.no-results{
+    display:none;
+    text-align:center;
+    padding:50px;
+    color:#899890;
+}
+
+/* =========================
+   MODAL
+   ========================= */
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:5000;
+    background:rgba(0,0,0,.88);
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:min(900px,100%);
+    background:#06100b;
+    border:1px solid #00ff66;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 0 50px rgba(0,255,100,.25);
+    animation:modalIn .3s ease;
+}
+
+@keyframes modalIn{
+    from{
+        transform:scale(.85);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+.modal-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:15px 20px;
+}
+
+.modal-header h3{
+    color:#00ff66;
+}
+
+.close{
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    border:1px solid #00ff66;
+    background:transparent;
+    color:#00ff66;
+    cursor:pointer;
+    font-size:20px;
+}
+
+.video-container{
+    width:100%;
+    aspect-ratio:16/9;
+    background:#000;
+}
+
+.video-container iframe{
+    width:100%;
+    height:100%;
+    border:0;
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+
+footer{
+    margin-top:40px;
+    padding:40px 6%;
+    text-align:center;
+    background:#010604;
+    border-top:1px solid rgba(0,255,100,.18);
+}
+
+.footer-logo{
+    color:#00ff66;
+    font-size:25px;
+    font-weight:900;
+    text-shadow:0 0 15px #00ff66;
+    margin-bottom:10px;
+}
+
+footer p{
+    color:#68776f;
+    margin:7px 0;
+}
+
+.socials{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin-top:18px;
+}
+
+.socials a{
+    width:38px;
+    height:38px;
+    border:1px solid #174d30;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#00ff66;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.socials a:hover{
+    background:#00ff66;
+    color:#001b09;
+}
+
+/* =========================
+   SCROLL TOP
+   ========================= */
+
+#topBtn{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    border:1px solid #00ff66;
+    background:#06100b;
+    color:#00ff66;
+    cursor:pointer;
+    display:none;
+    z-index:2000;
+    font-size:18px;
+}
+
+#topBtn.show{
+    display:block;
+}
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media(max-width:850px){
+
+    header{
+        flex-wrap:wrap;
+        gap:15px;
+    }
+
+    nav{
+        order:3;
+        width:100%;
+        justify-content:center;
+        gap:15px;
+    }
+
+    .search-box{
+        margin-left:auto;
+    }
+
+    .hero{
+        min-height:580px;
+        padding-top:50px;
+    }
+
+    .hero h1{
+        font-size:52px;
+    }
+
+    .movie-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:14px;
+    }
+
+    .poster{
+        height:240px;
+    }
+
+    .trailer-banner{
+        padding:30px 22px;
+    }
+
+}
+
+@media(max-width:520px){
+
+    header{
+        padding:15px;
+    }
+
+    .logo{
+        font-size:22px;
+    }
+
+    nav{
+        font-size:13px;
+    }
+
+    .search-box{
+        width:100%;
+    }
+
+    .search-box input{
+        flex:1;
+        width:auto;
+    }
+
+    .hero{
+        padding:45px 20px;
+    }
+
+    .hero h1{
+        font-size:45px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+    section{
+        padding:40px 18px;
+    }
+
+    .movie-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .poster{
+        height:220px;
+    }
+
+    .movie-info{
+        padding:10px;
+    }
+
+    .movie-info h3{
+        font-size:14px;
+    }
+
+    .trailer-banner{
+        margin:20px 18px;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     PARTICLES
+     ========================= -->
+
+<div id="particles"></div>
+
+<!-- =========================
+     HEADER
+     ========================= -->
+
+<header>
+
+    <a href="#" class="logo">
+        BTECH<span> CLIPS</span> ⚡
+    </a>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#movies">Movies</a>
+        <a href="#trailers">Trailers</a>
+        <a href="#about">About</a>
+    </nav>
+
+    <div class="search-box">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search movies..."
+        >
+        <button onclick="searchMovies()">🔎</button>
+    </div>
+<p>by Cassey Migoya Davidson</p>
+
+</header>
+
+
+<!-- =========================
+     HERO
+     ========================= -->
+
+<main>
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            🎬 WELCOME TO BTECH CLIPS
+
+        </div>
+
+        <h1>
+            WATCH.<br>
+            <span>DISCOVER.</span><br>
+            ENJOY.
+        </h1>
+
+        <p>
+            Discover movies, trailers and entertainment in one
+            futuristic movie experience. Search your favorite
+            movies and explore what's trending.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#movies" class="btn btn-green">
+                🎬 Explore Movies
+            </a>
+
+            <a href="#trailers" class="btn btn-dark">
+                ▶ Watch Trailers
+            </a>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MOVIES
+     ========================= -->
+
+<section id="movies">
+
+    <div class="section-title">
+        <h2>
+            🔥 <span>Featured</span> Movies
+        </h2>
+
+        <div class="view-all" onclick="showAllMovies()">
+            View All →
+        </div>
+    </div>
+
+    <div class="categories">
+
+        <button class="category active" onclick="filterMovies('all',this)">
+            All
+        </button>
+
+        <button class="category" onclick="filterMovies('action',this)">
+            Action
+        </button>
+
+        <button class="category" onclick="filterMovies('comedy',this)">
+            Comedy
+        </button>
+
+        <button class="category" onclick="filterMovies('sci-fi',this)">
+            Sci-Fi
+        </button>
+
+        <button class="category" onclick="filterMovies('animation',this)">
+            Animation
+        </button>
+
+        <button class="category" onclick="filterMovies('drama',this)">
+            Drama
+        </button>
+
+    </div>
+
+    <div class="movie-grid" id="movieGrid">
+
+        <!-- MOVIE 1 -->
+        <article class="movie-card"
+                 data-title="Avengers Endgame"
+                 data-category="action">
+
+            <div class="poster">
+                <img
+                    src="https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg"
+                    alt="Avengers Endgame"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="movie-info">
+
+                <h3>Avengers: Endgame</h3>
+
+                <div class="meta">
+                    <span>2019</span>
+                    <span class="rating">★ 8.4</span>
+                </div>
+
+                <button
+                    class="trailer-btn"
+                    onclick="openTrailer(
+                    'Avengers: Endgame',
+                    'TcMBFSGVi1c'
+                    )">
+                    ▶ Trailer
+                </button>
+
+            </div>
+        </article>
+
+
+        <!-- MOVIE 2 -->
+        <article class="movie-card"
+                 data-title="Spider Man No Way Home"
+                 data-category="action">
+
+            <div class="poster">
+                <img
+                    src="https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg"
+                    alt="Spider-Man No Way Home"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="movie-info">
+
+                <h3>Spider-Man: No Way Home</h3>
+
+                <div class="meta">
+                    <span>2021</span>
+                    <span class="rating">★ 8.2</span>
+                </div>
+
+                <button>
+                    class="trailer-btn"
+                    onclick="openTrailer(
+                    'Spider-Man: No Way Home',
+                    'JfVOs4VSpmA'
+                    )">
+                    ▶ Trailer
+                </button>
+
+            </div>
+        </article>
+
+
+        <!-- MOVIE 3 -->
+        <article class="movie-card"
+                 data-title="Black Panther"
+                 data-category="action">
+
+            <div class="poster">
+                <img
+                    src="https://image.tmdb.org/t/p/w500/uxzzxijgPIY7slzFvMotPv8wjKA.jpg"
+                    alt="Black Panther"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="movie-info">
+
+                <h3>Black Panther</h3>
+
+                <div class="meta">
+                    <span>2018</span>
+                    <span class="rating">★ 7.3</span>
+                </div>
+
+                <button
+                    class="trailer-btn"
+                    onclick="openTrailer(
+                    'Black Panther',
+                    'xjDjIWPwcPU'
+                    )">
+                    ▶ Trailer
+                </button>
+
+            </div>
+        </article>
+
+
+        <!-- MOVIE 4 -->
+        <article class="movie-card"
+                 data-title="Interstellar"
+                 data-category="sci-fi">
+
+            <div class="poster">
+                <img
+                    src="https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg"
+                    alt="Interstellar"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="movie-info">
+
+                <h3>Interstellar</h3>
+
+                <div class="meta">
+                    <span>2014</span>
+                    <span class="rating">★ 8.7</span>
+                </div>
+
+                <button
+                    class="trailer-btn"
+                    onclick="openTrailer(
+                    'Interstellar',
+                    'zSWdZVtXT7E'
+                    )">
+                    ▶ Trailer
+                </button>
+
+            </div>
+        </article>
+
+
+        <!-- MOVIE 5 -->
+        <article class="movie-card"
+                 data-title="Inception"
+                 data-category="sci-fi">
+
+            <div class="poster">
+                <img
+                    src="https://image.tmdb.org/t/p/w500/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg"
+                    alt="Inception"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="movie-info">
+
+                <h3>Inception</h3>
+
+                <div class="meta">
+                    <span>2010</span>
+                    <span class="rating">★ 8.8</span>
+                </div>
+
+                <button
+                    class="trailer-btn"
+                    onclick="openTrailer(
+                    'Inception',
+                    'YoHD9XEInc0'
+                    )">
+                    ▶ Trailer
+                </button>
+
+            </div>
+        </article>
+
+
+        <!-- MOVIE 6 -->
+        <article class="movie-card"
+                 data-title="The Batman"
+                 data-category="action">
+
+            <div class="poster">
+                <img
+                    src="https://image.tmdb.org/t/p/w500/74xTEgt7R36Fpooo50r9T25onhq.jpg"
+                    alt="The Batman"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="movie-info">
+
+                <h3>The Batman</h3>
+
+                <div class="meta">
+                    <span>2022</span>
+                    <span class="rating">★ 7.8</span>
+                </div>
+
+                <button
+                    class="trailer-btn"
+                    onclick="openTrailer(
+                    'The Batman',
+                    'mqqft2x_Aa4'
+                    )">
+                    ▶ Trailer
+                </button>
+
+            </div>
+        </article>
+
+
+        <!-- MOVIE 7 -->
+        <article class="movie-card"
+                 data-title="Guardians of the Galaxy"
+                 data-category="sci-fi">
+
+            <div class="poster">
+                <img
+                    src="https://image.tmdb.org/t/p/w500/r7vmZjiyZw9rpJENvsrMD3R2pB3.jpg"
+                    alt="Guardians of the Galaxy"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="movie-info">
+
+                <h3>Guardians of the Galaxy</h3>
+
+                <div class="meta">
+                    <span>2014</span>
+                    <span class="rating">★ 8.0</span>
+                </div>
+
+                <button
+                    class="trailer-btn"
+                    onclick="openTrailer(
+                    'Guardians of the Galaxy',
+                    'd96cjJhvlMA'
+                    )">
+                    ▶ Trailer
+                </button>
+
+            </div>
+        </article>
+
+
+        <!-- MOVIE 8 -->
+        <article class="movie-card"
+                 data-title="The Lion King"
+                 data-category="animation">
+
+            <div class="poster">
+                <img
+                    src="https://image.tmdb.org/t/p/w500/2bXbqYdUdNVa8VIWXVfclP2ICtT.jpg"
+                    alt="The Lion King"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="movie-info">
+
+                <h3>The Lion King</h3>
+
+                <div class="meta">
+                    <span>2019</span>
+                    <span class="rating">★ 6.8</span>
+                </div>
+
+                <button
+                    class="trailer-btn"
+                    onclick="openTrailer(
+                    'The Lion King',
+                    '7TavVZMewpY'
+                    )">
+                    ▶ Trailer
+                </button>
+
+            </div>
+        </article>
+
+
+        <!-- MOVIE 9 -->
+        <article class="movie-card"
+                 data-title="Joker"
+                 data-category="drama">
+
+            <div class="poster">
+                <img
+                    src="https://image.tmdb.org/t/p/w500/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg"
+                    alt="Joker"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="movie-info">
+
+                <h3>Joker</h3>
+
+                <div class="meta">
+                    <span>2019</span>
+                    <span class="rating">★ 8.3</span>
+                </div>
+
+                <button
+                    class="trailer-btn"
+                    onclick="openTrailer(
+                    'Joker',
+                    'zAGVQLHvwOY'
+                    )">
+                    ▶ Trailer
+                </button>
+
+            </div>
+        </article>
+
+
+        <!-- MOVIE 10 -->
+        <article class="movie-card"
+                 data-title="Free Guy"
+                 data-category="comedy">
+
+            <div class="poster">
+                <img
+                    src="https://image.tmdb.org/t/p/w500/xmbU4JTUm8rsdtn7Y3Fcm30GpeT.jpg"
+                    alt="Free Guy"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="movie-info">
+
+                <h3>Free Guy</h3>
+
+                <div class="meta">
+                    <span>2021</span>
+                    <span class="rating">★ 7.1</span>
+                </div>
+
+                <button
+                    class="trailer-btn"
+                    onclick="openTrailer(
+                    'Free Guy',
+                    'X2m-08cOAbc'
+                    )">
+                    ▶ Trailer
+                </button>
+
+            </div>
+        </article>
+
+
+        <!-- MOVIE 11 -->
+        <article class="movie-card"
+                 data-title="Toy Story"
+                 data-category="animation">
+
+            <div class="poster">
+                <img
+                    src="https://image.tmdb.org/t/p/w500/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg"
+                    alt="Toy Story"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="movie-info">
+
+                <h3>Toy Story</h3>
+
+                <div class="meta">
+                    <span>1995</span>
+                    <span class="rating">★ 8.3</span>
+                </div>
+
+                <button
+                    class="trailer-btn"
+                    onclick="openTrailer(
+                    'Toy Story',
+                    'v-PjgYDrg70'
+                    )">
+                    ▶ Trailer
+                </button>
+
+            </div>
+        </article>
+
+
+        <!-- MOVIE 12 -->
+        <article class="movie-card"
+                 data-title="Avatar"
+                 data-category="sci-fi">
+
+            <div class="poster">
+                <img
+                    src="https://image.tmdb.org/t/p/w500/kyeqWdyUXW608qlYkRqosgbbJyK.jpg"
+                    alt="Avatar"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="movie-info">
+
+                <h3>Avatar</h3>
+
+                <div class="meta">
+                    <span>2009</span>
+                    <span class="rating">★ 7.9</span>
+                </div>
+
+                <button
+                    class="trailer-btn"
+                    onclick="openTrailer(
+                    'Avatar',
+                    '5PSNL1qE6VY'
+                    )">
+                    ▶ Trailer
+                </button>
+
+            </div>
+        </article>
+
+    </div>
+
+    <div class="no-results" id="noResults">
+        😕 No movies found.
+        Try another search.
+    </div>
+
+</section>
+
+
+<!-- =========================
+     TRAILER SECTION
+     ========================= -->
+
+<section id="trailers">
+
+    <div class="section-title">
+        <h2>
+            🎞️ Latest <span>Trailers</span>
+        </h2>
+    </div>
+
+    <div class="trailer-banner">
+
+        <h2>🎬 Movie Night Starts Here</h2>
+
+        <p>
+            Explore movie trailers and discover your next
+            favorite film.
+        </p>
+
+        <button
+            class="btn btn-green"
+            onclick="openTrailer('Spider-Man: No Way Home','JfVOs4VSpmA')">
+            ▶ Watch Featured Trailer
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ABOUT
+     ========================= -->
+
+<section id="about">
+
+    <div class="section-title">
+        <h2>
+            💚 About <span>Cassey Codes</span>
+        </h2>
+    </div>
+
+    <p style="
+        max-width:750px;
+        color:#aab8b0;
+        line-height:1.8;
+    ">
+        Cassey Codes is a futuristic movie discovery website
+        created for movie lovers. Browse movies, search for
+        titles and watch official trailers in a clean neon
+        interface.
+    </p>
+
+</section>
+
+</main>
+
+
+<!-- =========================
+     TRAILER MODAL
+     ========================= -->
+
+<div class="modal" id="trailerModal">
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <h3 id="modalTitle">
+                Movie Trailer
+            </h3>
+
+            <button
+                class="close"
+                onclick="closeTrailer()">
+                ×
+            </button>
+
+        </div>
+
+        <div class="video-container">
+
+            <iframe
+                id="trailerFrame"
+                src=""
+                title="Movie Trailer"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     FOOTER
+     ========================= -->
+
+<footer>
+
+    <div class="footer-logo">
+⚡ BTECH CLIPS 
+    </div>
+
+    <p>
+        Movies • Trailers • Entertainment
+    </p>
+
+    <div class="socials">
+
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="#" aria-label="Instagram">◎</a>
+        <a href="#" aria-label="YouTube">▶</a>
+        <a href="#" aria-label="TikTok">♪</a>
+
+    </div>
+
+    <p style="margin-top:20px;">
+        © <span id="year"></span> BTECHCLIPS programed by @Cassey Migoya Davidson. All rights reserved.
+    </p>
+</footer>
+
+
+<!-- =========================
+     BACK TO TOP
+     ========================= -->
+
+<button id="topBtn" onclick="goTop()">
+    ↑
+</button>
+
+
+<script>
+
+/* =========================================================
+   CASSEY CODES JAVASCRIPT
+   ========================================================= */
+
+
+/* =========================
+   CREATE BACKGROUND PARTICLES
+   ========================= */
+
+const particleContainer =
+    document.getElementById("particles");
+
+for(let i = 0; i < 45; i++){
+
+    const particle =
+        document.createElement("div");
+
+    particle.className = "particle";
+
+    particle.style.left =
+        Math.random() * 100 + "%";
+
+    particle.style.animationDuration =
+        (5 + Math.random() * 12) + "s";
+
+    particle.style.animationDelay =
+        Math.random() * 10 + "s";
+
+    particle.style.width =
+        (2 + Math.random() * 4) + "px";
+
+    particle.style.height =
+        particle.style.width;
+
+    particleContainer.appendChild(particle);
+}
+
+
+/* =========================
+   SEARCH MOVIES
+   ========================= */
+
+const searchInput =
+    document.getElementById("searchInput");
+
+searchInput.addEventListener("input", function(){
+
+    const query =
+        this.value.toLowerCase().trim();
+
+    const cards =
+        document.querySelectorAll(".movie-card");
+
+    let found = 0;
+
+    cards.forEach(card => {
+
+        const title =
+            card.dataset.title.toLowerCase();
+
+        if(title.includes(query)){
+
+            card.style.display = "";
+
+            found++;
+
+        }else{
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+    document.getElementById("noResults").style.display =
+        found === 0 ? "block" : "none";
+
+});
+
+
+function searchMovies(){
+
+    searchInput.focus();
+
+}
+
+
+/* =========================
+   FILTER MOVIES
+   ========================= */
+
+function filterMovies(category, button){
+
+    const cards =
+        document.querySelectorAll(".movie-card");
+
+    document
+        .querySelectorAll(".category")
+        .forEach(btn => btn.classList.remove("active"));
+
+    button.classList.add("active");
+
+    let found = 0;
+
+    cards.forEach(card => {
+
+        if(
+            category === "all" ||
+            card.dataset.category === category
+        ){
+
+            card.style.display = "";
+            found++;
+
+        }else{
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+    document.getElementById("noResults").style.display =
+        found === 0 ? "block" : "none";
+
+    searchInput.value = "";
+
+}
+
+
+/* =========================
+   SHOW ALL MOVIES
+   ========================= */
+
+function showAllMovies(){
+
+    const cards =
+        document.querySelectorAll(".movie-card");
+
+    cards.forEach(card => {
+        card.style.display = "";
+    });
+
+    document.getElementById("noResults").style.display =
+        "none";
+
+    searchInput.value = "";
+
+    document
+        .querySelectorAll(".category")
+        .forEach(btn => btn.classList.remove("active"));
+
+    document
+        .querySelector(".category")
+        .classList.add("active");
+
+}
+
+
+/* =========================
+   OPEN TRAILER
+   ========================= */
+
+function openTrailer(title, videoId){
+
+    const modal =
+        document.getElementById("trailerModal");
+
+    const frame =
+        document.getElementById("trailerFrame");
+
+    const modalTitle =
+        document.getElementById("modalTitle");
+
+    modalTitle.textContent =
+        title + " — Trailer";
+
+    frame.src =
+        "https://www.youtube.com/embed/" +
+        videoId +
+        "?autoplay=1&rel=0";
+
+    modal.classList.add("show");
+
+    document.body.style.overflow = "hidden";
+
+}
+
+
+/* =========================
+   CLOSE TRAILER
+   ========================= */
+
+function closeTrailer(){
+
+    const modal =
+        document.getElementById("trailerModal");
+
+    const frame =
+        document.getElementById("trailerFrame");
+
+    frame.src = "";
+
+    modal.classList.remove("show");
+
+    document.body.style.overflow = "";
+
+}
+
+
+/* =========================
+   CLOSE MODAL WHEN CLICKING
+   OUTSIDE VIDEO
+   ========================= */
+
+document
+    .getElementById("trailerModal")
+    .addEventListener("click", function(event){
+
+        if(event.target === this){
+            closeTrailer();
+        }
+
+    });
+
+
+/* =========================
+   ESCAPE KEY CLOSES MODAL
+   ========================= */
+
+document.addEventListener("keydown", function(event){
+
+    if(event.key === "Escape"){
+        closeTrailer();
+    }
+
+});
+
+
+/* =========================
+   BACK TO TOP
+   ========================= */
+
+const topBtn =
+    document.getElementById("topBtn");
+
+window.addEventListener("scroll", function(){
+
+    if(window.scrollY > 500){
+        topBtn.classList.add("show");
+    }else{
+        topBtn.classList.remove("show");
+    }
+
+});
+
+
+function goTop(){
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================
+   CURRENT YEAR
+   ========================= */
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+
+/* =========================
+   SIMPLE CARD REVEAL
+   ========================= */
+
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if(entry.isIntersecting){
+
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform =
+                        "translateY(0)";
+
+                }
+
+            });
+
+        },
+        {
+            threshold:.08
+        }
+    );
+
+
+document.querySelectorAll(".movie-card")
+    .forEach(card => {
+
+        card.style.opacity = "0";
+        card.style.transform = "translateY(25px)";
+        card.style.transition =
+            "opacity .6s ease, transform .6s ease";
+
+        observer.observe(card);
+
+    });
+
+</script>
+
+
+</body>
+</html>
